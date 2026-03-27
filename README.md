@@ -1,117 +1,171 @@
-# Emoji-Based Sentiment Analysis 😊📊
+# 🧠 Hybrid Sentiment Analysis with Emoji Understanding
 
-## Overview
-This project performs **sentiment analysis on social media text**, including both **text and emojis**.
+This project implements a **hybrid sentiment analysis system** that combines machine learning and rule-based techniques to analyze social media text, including emojis, and classify sentiment as positive, negative, or neutral.
 
-It uses a **hybrid approach**:
-- Machine Learning (Naive Bayes) → for text
-- Rule-Based Method → for emojis  
-
-The goal is to better understand real-world online sentiment, where emojis play a big role.
+Unlike traditional models, this system explicitly accounts for **emoji sentiment**, making it more aligned with real-world communication.
 
 ---
 
-## Features
-- Classifies text as **Positive or Negative**
-- Detects and analyzes **emoji sentiment**
-- Combines text + emoji sentiment into a final result
-- Uses **TF-IDF** for feature extraction
-- Evaluates performance using:
-  - Accuracy
-  - Precision
-  - Recall
-  - F1 Score
-  - ROC Curve
-- Compares results with other models:
+## 🚀 Key Features
+
+- 📊 Machine Learning-based sentiment classification using **Multinomial Naive Bayes**
+- 🔤 Text preprocessing with **TF-IDF feature extraction**
+- 😀 Rule-based **emoji sentiment analysis**
+- 🔗 Hybrid model combining text + emoji sentiment
+- 📈 Performance evaluation using:
+  - Accuracy, Precision, Recall, F1-score
+  - Confusion Matrix
+  - ROC Curve & AUC Score
+- ⚖️ Comparison with multiple models:
   - TextBlob
   - VADER
   - Flair
-  - RoBERTa
+  - RoBERTa (Transformer-based)
+- 🧪 Interactive sentiment testing using user input
+- 🖥️ Simple UI using `ipywidgets` for real-time predictions
 
 ---
 
-## Dataset
-- **Sentiment140 Dataset** (tweets)
-- Custom **Emoji Sentiment Dataset**
+## ⚙️ Methodology
+
+### 1. Data Collection
+- Used a subset (10,000 samples) of the **Sentiment140 dataset**
+- Balanced dataset with positive and negative tweets
+
+### 2. Data Preprocessing
+- Removed:
+  - Usernames (@)
+  - Links
+  - Special characters
+- Converted text to lowercase
+- Removed stopwords using NLTK
 
 ---
 
-## Tech Stack
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- NLTK
-- Matplotlib, Seaborn
-- Emoji library
-- Google Colab
+### 3. Feature Engineering
+- Applied **TF-IDF (Term Frequency - Inverse Document Frequency)**
+- Converted text into numerical feature vectors
 
 ---
 
-## How It Works
-
-### 1. Data Preprocessing
-- Clean tweets (remove links, usernames, symbols)
-- Convert text to lowercase
-- Remove stopwords
-- Extract emojis separately
-
-### 2. Feature Engineering
-- Use **TF-IDF** to convert text into numerical features
-
-### 3. Model Training
-- Train a **Multinomial Naive Bayes classifier**
-- Split data into training and testing sets
-
-### 4. Emoji Sentiment
-- Assign each emoji:
-  - `1 = Positive`
-  - `0 = Negative`
-- Based on dataset frequency
-
-### 5. Hybrid Sentiment Calculation
-Final sentiment = average of:
-- Text sentiment (ML model)
-- Emoji sentiment (rule-based)
+### 4. Model Training
+- Used **Multinomial Naive Bayes classifier**
+- Dataset split:
+  - 75% training
+  - 25% testing
+- Evaluated using ROC-AUC and classification metrics
 
 ---
 
-## Example
+### 5. Emoji Sentiment Analysis (Rule-Based)
 
-Input:"I love this product 😍😍"
+- Emoji dataset processed to assign:
+  - `1 → Positive`
+  - `0 → Negative`
+- Sentiment determined based on frequency of usage in positive vs negative contexts
 
-Output:Positive Sentiment
-
-
----
-
-## Results
-- Achieved solid performance using Naive Bayes
-- Hybrid approach improves real-world accuracy
-- Model handles emoji-heavy text better than text-only models
+Example:❤❤😡 → [1, 1, 0] → Average = 0.66 (Positive leaning)
 
 ---
 
-## Extra Features
-- Interactive input (user can test their own text)
-- Sentiment percentage calculation
-- Visualization:
-  - Confusion Matrix
-  - ROC Curve
-  - Precision / Recall / F1 charts
+### 6. Hybrid Sentiment Calculation
+
+- Text and emoji are processed separately:
+  - Text → ML model
+  - Emoji → Rule-based system
+
+- Final sentiment score:
+
+- Final Score = (Text Score + Emoji Score) / (Number of Emojis + 1)
+
+
+- Output classified as:
+  - Positive
+  - Negative
+  - Neutral
 
 ---
 
-## Limitations
-- Limited dataset size (10k used from 1.6M)
-- Emoji meanings can be context-dependent
-- Sarcasm is difficult to detect
-- Cultural differences affect interpretation
+## 🧪 Example
+
+**Input:**  
+
+"I love this 😡"
+
+**Output:**
+
+Mixed sentiment due to conflicting text and emoji signals
+
+  
+---
+
+## 📊 Model Evaluation
+
+The model was evaluated using:
+
+- Accuracy  
+- Precision  
+- Recall  
+- F1 Score  
+- Confusion Matrix  
+- ROC Curve (AUC Score)  
+
+Visualization includes:
+- Confusion matrix heatmap
+- ROC curve plot
+- Performance comparison bar charts
 
 ---
 
-## Future Improvements
-- Use deep learning models (LSTM, Transformers)
-- Improve emoji understanding with ML
-- Expand dataset (multi-language support)
-- Better handling of sarcasm and context
+## ⚖️ Model Comparison
+
+The system compares results across multiple models:
+
+| Model       | Type                  |
+|------------|----------------------|
+| Naive Bayes | ML (custom trained)  |
+| TextBlob    | Lexicon-based        |
+| VADER       | Rule-based (social media optimized) |
+| Flair       | Deep learning        |
+| RoBERTa     | Transformer-based    |
+
+This allows analysis of:
+- Accuracy vs complexity
+- Lightweight vs deep models
+
+---
+
+## 🛠️ Technologies Used
+
+- Python  
+- Pandas, NumPy  
+- NLTK  
+- Scikit-learn  
+- Matplotlib, Seaborn  
+- Emoji  
+- Transformers (HuggingFace)  
+- Google Colab  
+- Ipywidgets  
+
+---
+> All implementation is contained within a single notebook.
+
+---
+## ⚠️ Limitations
+
+- Difficulty handling sarcasm and context
+- Emoji meaning varies across cultures
+- Rule-based emoji system lacks contextual awareness
+- Limited dataset size (subset used)
+
+---
+
+## 🔮 Future Improvements
+
+- Use deep learning for emoji sentiment
+- Improve context awareness (sarcasm detection)
+- Expand dataset (multilingual + larger samples)
+- Optimize hybrid weighting instead of simple averaging
+
+---
 
