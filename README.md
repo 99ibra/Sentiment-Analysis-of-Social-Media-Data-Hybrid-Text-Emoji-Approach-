@@ -88,15 +88,65 @@ Example:❤❤😡 → [1, 1, 0] → Average = 0.66 (Positive leaning)
 
 ## 🧪 Example
 
-**Input:**  
+Input: i hate this love song 😡❤
+Text Sentiment Score: 0.45
+Emoji Sentiment Score: 0.50
+Final Sentiment Score: 0.48
+Final Prediction: Negative
 
-"I love this 😡"
+Input: I love it 😍💖
+Text Sentiment Score: 0.71
+Emoji Sentiment Score: 0.60
+Final Sentiment Score: 0.66
+Final Prediction: Positive
 
-**Output:**
+Input: Its terrible 😡😠
+Text Sentiment Score: 0.22
+Emoji Sentiment Score: 0.30
+Final Sentiment Score: 0.26
+Final Prediction: Negative
 
-Mixed sentiment due to conflicting text and emoji signals
+Input: Not sure 🤔😐
+Text Sentiment Score: 0.62
+Emoji Sentiment Score: 0.50
+Final Sentiment Score: 0.56
+Final Prediction: Positive
 
-  
+Input: Great job 😄👏
+Text Sentiment Score: 0.61
+Emoji Sentiment Score: 0.75
+Final Sentiment Score: 0.68
+Final Prediction: Positive
+
+Input: i hate everything 😤💔
+Text Sentiment Score: 0.12
+Emoji Sentiment Score: 0.20
+Final Sentiment Score: 0.16
+Final Prediction: Negative
+
+Input: Check out this link 😎📱
+Text Sentiment Score: 0.75
+Emoji Sentiment Score: 0.80
+Final Sentiment Score: 0.775
+Final Prediction: Positive
+
+Input: Meh… I don’t care 😐
+Text Sentiment Score: 0.50
+Emoji Sentiment Score: 0.40
+Final Sentiment Score: 0.45
+Final Prediction: Negative
+
+Input: This is amazing 😍✨
+Text Sentiment Score: 0.80
+Emoji Sentiment Score: 0.90
+Final Sentiment Score: 0.85
+Final Prediction: Positive
+
+Input: Worst day ever 😭💀
+Text Sentiment Score: 0.10
+Emoji Sentiment Score: 0.15
+Final Sentiment Score: 0.125
+Final Prediction: Negative
 ---
 
 ## 📊 Model Evaluation
